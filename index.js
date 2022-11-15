@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-
 const run = async () => {
 
     const browser = await puppeteer.launch();
@@ -60,7 +59,14 @@ const run = async () => {
 
             const imageUrl = product.querySelector('img').src;
             const price = product.querySelector('.product-price').innerText;
-            return { name, price, star: result, ratingCount, link, imageUrl };
+            return {
+                name,
+                price,
+                star: result,
+                ratingCount,
+                link,
+                imageUrl,
+            };
         });
     });
 
@@ -71,6 +77,7 @@ const run = async () => {
         }
         console.log('File written to...');
     });
+
     await browser.close();
 
 };
